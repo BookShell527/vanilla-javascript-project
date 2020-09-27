@@ -20,7 +20,11 @@ btn.addEventListener("click", () => {
     b2 = random();
     b3 = random();
     bColor = `rgb(${b1}, ${b2}, ${b3})`
-    color.innerHTML = bColor;
+    if (mode.innerHTML === "rgb") {
+        color.innerHTML = bColor;
+    } else {
+        color.innerHTML = rgbToHex(b1,b2,b3);
+    }
     html.style.backgroundColor = bColor;
 })
 
@@ -38,10 +42,8 @@ mode.addEventListener("click", () => {
     if (mode.innerHTML === "rgb") {
         mode.innerHTML = "hex";
         color.innerHTML = rgbToHex(b1,b2,b3);
-        return;
     } else if (mode.innerHTML === "hex") {
         color.innerHTML = bColor;
         mode.innerHTML = "rgb";
-        return;
     }
 })
